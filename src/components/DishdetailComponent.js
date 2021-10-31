@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 export class DishDetail extends Component {
+   componentDidMount() {
+      console.log('Dish Detail Component componentDidMount invoked');
+   }
+
+   componentDidUpdate() {
+      console.log('Dish Detail Component componentDidUpdate invoked');
+   }
+
    renderDish(dish) {
       if (dish != null)
          return (
@@ -44,6 +52,8 @@ export class DishDetail extends Component {
    }
 
    render() {
+      console.log('Dish Detail Component render invoked');
+
       const { dish } = this.props;
       return this.renderDish(dish);
    }
