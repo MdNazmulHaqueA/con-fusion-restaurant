@@ -18,7 +18,7 @@ function RenderDish({ dish }) {
    );
 }
 
-function RenderComment({ comments }) {
+function RenderComments({ comments }) {
    return (
       <div className="col-12 col-md">
          <h3>Comments</h3>
@@ -49,7 +49,7 @@ const DishDetail = ({ dish }) => {
          <div className="container">
             <div className="row">
                <RenderDish dish={dish} />
-               <RenderComment comments={dish.comments} />
+               <RenderComments comments={dish.comments} />
             </div>
          </div>
       );
