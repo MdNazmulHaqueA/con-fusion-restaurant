@@ -53,18 +53,6 @@ function RenderComments({ comments }) {
 }
 
 const DishDetail = props => {
-   // if (dish) {
-   //    return (
-   //       <div className="container">
-   //          <div className="row">
-   //             <RenderDish dish={dish} />
-   //             <RenderComments comments={dish.comments} />
-   //          </div>
-   //       </div>
-   //    );
-   // } else {
-   //    return null;
-   // }
    return (
       <div className="container">
          <div className="row">
