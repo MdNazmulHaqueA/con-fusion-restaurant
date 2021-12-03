@@ -100,6 +100,7 @@ class Contact extends Component {
                   <h3>Send us your Feedback</h3>
                </div>
                <div className="col-12 col-md-9">
+                  {/* React redux form  */}
                   <LocalForm onSubmit={values => this.handleSubmit(values)}>
                      <Row className="form-group">
                         <Label htmlFor="firstname" md={2}>
