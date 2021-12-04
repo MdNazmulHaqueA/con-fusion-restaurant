@@ -27,8 +27,8 @@ function RenderDish({ dish }) {
       </Card>
    );
 }
-
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }) {
+   // function RenderComments({ comments, addComment, dishId }) {
    return (
       <div>
          <h3>Comments</h3>
@@ -50,7 +50,8 @@ function RenderComments({ comments, addComment, dishId }) {
                );
             })}
          {/* <CommentForm /> */}
-         <CommentForm dishId={dishId} addComment={addComment} />
+         {/* <CommentForm dishId={dishId} addComment={addComment} /> */}
+         <CommentForm dishId={dishId} postComment={postComment} />
       </div>
    );
 }
@@ -95,7 +96,7 @@ const DishDetail = props => {
                   {/* <RenderComments comments={props.comments} /> */}
                   <RenderComments
                      comments={props.comments}
-                     addComment={props.addComment}
+                     postComment={props.postComment}
                      dishId={props.dish.id}
                   />
                </div>

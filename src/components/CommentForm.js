@@ -32,7 +32,13 @@ export class CommentForm extends Component {
    handleCommentFormSubmit(values) {
       // alert('State currently: ' + JSON.stringify(values));
       this.toggleCommentFormModal();
-      this.props.addComment(
+      // this.props.addComment(
+      //    this.props.dishId,
+      //    values.rating,
+      //    values.author,
+      //    values.comment
+      // );
+      this.props.postComment(
          this.props.dishId,
          values.rating,
          values.author,
