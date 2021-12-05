@@ -12,19 +12,27 @@ import { Link } from 'react-router-dom';
 import CommentForm from './CommentForm';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderDish({ dish }) {
-   const { image, name, description } = dish;
+   const { name, description } = dish;
    return (
-      <Card>
-         <CardImg top src={baseUrl + dish.image} alt={dish.name} />
-         <CardBody>
-            <CardTitle>
-               <h3>{name}</h3>
-            </CardTitle>
-            <CardText>{description}</CardText>
-         </CardBody>
-      </Card>
+      <FadeTransform
+         in
+         transformProps={{
+            exitTransform: 'scale(0.5) translateY(-50%)',
+         }}
+      >
+         <Card>
+            <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+            <CardBody>
+               <CardTitle>
+                  <h3>{name}</h3>
+               </CardTitle>
+               <CardText>{description}</CardText>
+            </CardBody>
+         </Card>
+      </FadeTransform>
    );
 }
 function RenderComments({ comments, postComment, dishId }) {
@@ -32,23 +40,27 @@ function RenderComments({ comments, postComment, dishId }) {
    return (
       <div>
          <h3>Comments</h3>
-         {comments &&
-            comments.map(commentDetails => {
-               const { id, comment, author, date } = commentDetails;
-               return (
-                  <div key={id}>
-                     <p>{comment}</p>
-                     <p>
-                        --{author} ,{' '}
-                        {new Intl.DateTimeFormat('en-US', {
-                           year: 'numeric',
-                           month: 'short',
-                           day: '2-digit',
-                        }).format(new Date(Date.parse(date)))}
-                     </p>
-                  </div>
-               );
-            })}
+         <Stagger in>
+            {comments &&
+               comments.map(commentDetails => {
+                  const { id, comment, author, date } = commentDetails;
+                  return (
+                     <Fade in>
+                        <div key={id}>
+                           <p>{comment}</p>
+                           <p>
+                              --{author} ,{' '}
+                              {new Intl.DateTimeFormat('en-US', {
+                                 year: 'numeric',
+                                 month: 'short',
+                                 day: '2-digit',
+                              }).format(new Date(Date.parse(date)))}
+                           </p>
+                        </div>
+                     </Fade>
+                  );
+               })}
+         </Stagger>
          {/* <CommentForm /> */}
          {/* <CommentForm dishId={dishId} addComment={addComment} /> */}
          <CommentForm dishId={dishId} postComment={postComment} />
